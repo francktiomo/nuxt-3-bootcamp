@@ -1,10 +1,13 @@
+<script setup>
+const props = defineProps({
+  description: String,
+});
+</script>
+
 <template>
   <div class="mt-5">
     <p class="mb-10">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-      cupiditate possimus corporis tenetur omnis aliquid provident debitis,
-      alias totam reiciendis hic nihil modi vel itaque iure cumque delectus
-      temporibus sequi!
+      {{ description }}
     </p>
   </div>
 </template>
