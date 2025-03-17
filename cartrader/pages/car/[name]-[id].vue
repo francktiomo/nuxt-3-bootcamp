@@ -12,6 +12,7 @@ const car = computed(() => {
   });
 });
 
+// Server-side error
 if (!car.value) {
   throw createError({
     statusCode: 404,
