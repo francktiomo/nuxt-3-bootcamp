@@ -1,4 +1,6 @@
 <script setup>
+const { makes } = useCars();
+
 const modal = ref({
   make: false,
   location: false,
