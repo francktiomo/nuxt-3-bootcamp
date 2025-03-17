@@ -12,6 +12,13 @@ const car = computed(() => {
   });
 });
 
+if (!car.value) {
+  throw createError({
+    statusCode: 404,
+    message: `Car with ID ${route.params.id} does not exist`,
+  });
+}
+
 definePageMeta({
   layout: "custom",
 });
@@ -19,9 +26,9 @@ definePageMeta({
 
 <template>
   <div v-if="car">
-    <CarDetailHero :car="car"/>
-    <CarDetailAttributes :features="car.features"/>
-    <CarDetailDescription :description="car.description"/>
+    <CarDetailHero :car="car" />
+    <CarDetailAttributes :features="car.features" />
+    <CarDetailDescription :description="car.description" />
     <CarDetailContact />
   </div>
 </template>
