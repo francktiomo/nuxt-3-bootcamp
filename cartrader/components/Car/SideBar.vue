@@ -9,6 +9,10 @@ const modal = ref({
 
 const city = ref("");
 const route = useRoute();
+const priceRange = ref({
+  min: "",
+  max: "",
+});
 
 const updateModal = (key) => {
   modal.value[key] = !modal.value[key];
@@ -30,7 +34,7 @@ const onChangeLocation = () => {
 const onChangeMake = (make) => {
   updateModal("make");
   navigateTo(`/city/${route.params.city}/car/${make}`);
-}
+};
 </script>
 
 <template>
@@ -65,7 +69,14 @@ const onChangeMake = (make) => {
         class="absolute border shadow left-56 p-5 top-1 -m-1 w-[600px] flex justify-between flex-wrap bg-white"
         v-if="modal.make"
       >
-        <h4 v-for="make in makes" :key="make" class="w-1/3" @click="onChangeMake(make)">{{ make }}</h4>
+        <h4
+          v-for="make in makes"
+          :key="make"
+          class="w-1/3"
+          @click="onChangeMake(make)"
+        >
+          {{ make }}
+        </h4>
       </div>
     </div>
     <!-- MAKE END -->
@@ -73,6 +84,26 @@ const onChangeMake = (make) => {
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Price</h3>
       <h3 class="text-blue-400 capitalize">WIP</h3>
+      <div
+        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white"
+        v-if="modal.price"
+      >
+        <input
+          class="border p-1 rounded"
+          type="number"
+          placeholder="Min"
+          v-model="priceRange.min"
+        />
+        <input
+          class="border p-1 rounded"
+          type="number"
+          placeholder="Max"
+          v-model="priceRange.max"
+        />
+        <button class="bg-blue-400 w-full mt-2 rounded text-white p-1">
+          Apply
+        </button>
+      </div>
     </div>
     <!-- PRICE END -->
   </div>
